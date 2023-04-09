@@ -14,7 +14,6 @@ import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants';
 import config from '../config/config';
 import state from '../store';
 
-// ! go back button dissapears when we click customize button
 const Customizer = () => {
   const snap = useSnapshot(state);
 
@@ -104,9 +103,9 @@ const Customizer = () => {
   // determines if the texture or logo is active, are we showing both? or only one?
   // comes from store/index.js
   const handleActiveFilterTab = (tabName) => {
-    switch (activeEditorTab) {
+    switch (tabName) {
       case "logoShirt":
-        state.isLogoTexture = !activeFilterTab[tabName]; // toggle logo on/off
+        state.isLogoTexture = !activeFilterTab[tabName];
         break;
       case "stylishShirt":
         state.isFullTexture = !activeFilterTab[tabName];
@@ -114,7 +113,9 @@ const Customizer = () => {
       default:
         state.isLogoTexture = true;
         state.isFullTexture = false;
+        break;
     }
+
 
     // after setting the state, we can update the active filter tab
     setActiveFilterTab((prevState) => {
@@ -137,49 +138,56 @@ const Customizer = () => {
   // The handle click event now shows the name of the tab when its clicked
   return (
     <AnimatePresence>
-      {snap.intro &&
-        (<>
-          <motion.div key="custom" className="absolute top-0 left-0 z-10" {...slideAnimation("left")}>
-            <div className="flex items-center min-h-screen" {...slideAnimation("right")}>
+      {!snap.intro && (
+        <>
+          <motion.div
+            key="custom"
+            className="absolute top-0 left-0 z-10"
+            {...slideAnimation('left')}
+          >
+            <div className="flex items-center min-h-screen">
               <div className="editortabs-container tabs">
-
                 {EditorTabs.map((tab) => (
                   <Tab
                     key={tab.name}
                     tab={tab}
-                    handleClick={() => { setActiveEditorTab(tab.name) }}
+                    handleClick={() => setActiveEditorTab(tab.name)}
                   />
                 ))}
 
                 {generateTabContent()}
-
               </div>
             </div>
           </motion.div>
 
-
-          <motion.div className='absolute z-10 top-5 right-5' {...fadeAnimation}>
+          <motion.div
+            className="absolute z-10 top-5 right-5"
+            {...fadeAnimation}
+          >
             <CustomButton
               type="filled"
               title="Go Back"
               handleClick={() => state.intro = true}
-              customStyles={"w-fit px-4 py-2.5 font-bold text-sm"} />
+              customStyles="w-fit px-4 py-2.5 font-bold text-sm"
+            />
           </motion.div>
 
-          <motion.div className="filtertabs-container" {...slideAnimation('up')}>
+          <motion.div
+            className='filtertabs-container'
+            {...slideAnimation("up")}
+          >
             {FilterTabs.map((tab) => (
               <Tab
                 key={tab.name}
                 tab={tab}
                 isFilterTab
                 isActiveTab={activeFilterTab[tab.name]}
-                handleClick={() => { handleActiveFilterTab(tab.name) }}
+                handleClick={() => handleActiveFilterTab(tab.name)}
               />
             ))}
           </motion.div>
-
-        </>)
-      }
+        </>
+      )}
     </AnimatePresence>
   )
 }
