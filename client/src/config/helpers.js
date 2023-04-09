@@ -1,3 +1,4 @@
+// Gets the contrasting color based on the background
 export const downloadCanvasToImage = () => {
   const canvas = document.querySelector("canvas");
   const dataURL = canvas.toDataURL();

@@ -8,13 +8,18 @@ import state from '../store';
 
 const Shirt = () => {
   const snap = useSnapshot(state);
+
+  // Renders the model
   const { nodes, materials } = useGLTF('/shirt_baked.glb');
 
+  // Applies the texture to the shirt
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
 
+  // Hook - uses callback functions state and delta to - apply color smoothly 
   useFrame((state, delta) => easing.dampC(materials.lambert1.color, snap.color, 0.25, delta));
 
+  // Tracks state changes so shirt will always render if the state does change
   const stateString = JSON.stringify(snap);
 
   return (
@@ -27,7 +32,7 @@ const Shirt = () => {
         dispose={null}
       >
         {snap.isFullTexture && (
-          <Decal 
+          <Decal
             position={[0, 0, 0]}
             rotation={[0, 0, 0]}
             scale={1}
@@ -36,7 +41,7 @@ const Shirt = () => {
         )}
 
         {snap.isLogoTexture && (
-          <Decal 
+          <Decal
             position={[0, 0.04, 0.15]}
             rotation={[0, 0, 0]}
             scale={0.15}
