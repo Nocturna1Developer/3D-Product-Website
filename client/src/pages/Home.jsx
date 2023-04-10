@@ -27,13 +27,13 @@ const Home = () => {
           <motion.div className="home-content" {...headContentAnimation}>
             <motion.div {...headTextAnimation}>
               <h1 className="head-text">
-                FORMULATE 3D <br className="x1:block hidden" /> W/ AI!
+                FORMULATE! 3D <br className="x1:block hidden" />
               </h1>
             </motion.div>
 
             <motion.div {...headContentAnimation} className='flex flex-col gap-5'>
               <p className="max-w-md font-normal text-grey-600 text-base">
-                Customize the 3D object!! Upload your own picture/logo or create one with ChatGPT. Be as creative as possible
+                Customize the 3D object!! Upload your own picture/logo or create one with ChatGPT. Be as creative as possible.
               </p>
               {/* Check tailwind for more options on customizing buttons "w-fit" etc */}
               <CustomButton
