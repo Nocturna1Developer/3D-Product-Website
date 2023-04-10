@@ -33,7 +33,7 @@ const Home = () => {
 
             <motion.div {...headContentAnimation} className='flex flex-col gap-5'>
               <p className="max-w-md font-normal text-grey-600 text-base">
-                Customize the 3D object!! Upload your own picture/logo or create one with ChatGPT. Be as creative as possible.
+                Unleash your creativity with ChatGPT's 3D object customization! Upload your own logo or picture, or create a new one from scratch. The possibilities are endless.
               </p>
               {/* Check tailwind for more options on customizing buttons "w-fit" etc */}
               <CustomButton
