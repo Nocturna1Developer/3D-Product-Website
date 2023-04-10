@@ -54,17 +54,16 @@ const Customizer = () => {
           handleSubmit={handleSubmit}
         />
       default:
-        return null
+        return null;
     }
   }
 
+
   // do we want to create a logo or full texture
   const handleSubmit = async (type) => {
-    if (!prompt) return alert("Please enter a prompt!!");
+    if (!prompt) return alert("Please enter a prompt");
 
     try {
-
-      // calling our backend to generate an AI image
       setGeneratingImg(true);
 
       const response = await fetch('http://localhost:8080/api/v1/dalle', {
@@ -78,22 +77,21 @@ const Customizer = () => {
       })
 
       const data = await response.json();
-      handleDecals(type, `data:image/png;base64,${data.photo}`)
 
+      handleDecals(type, `data:image/png;base64,${data.photo}`)
     } catch (error) {
       alert(error)
     } finally {
       setGeneratingImg(false);
       setActiveEditorTab("");
     }
-
-
   }
 
   // this is updating the store/index.js - logoDecal, fullDecal
   const handleDecals = (type, result) => {
     const decalType = DecalTypes[type];
-    state[decalType.stateProperty] = result
+
+    state[decalType.stateProperty] = result;
 
     if (!activeFilterTab[decalType.filterTab]) {
       handleActiveFilterTab(decalType.filterTab)
@@ -124,7 +122,6 @@ const Customizer = () => {
         [tabName]: !prevState[tabName]
       }
     })
-
   }
 
   // adds decals to the shirt based on file uploaded
