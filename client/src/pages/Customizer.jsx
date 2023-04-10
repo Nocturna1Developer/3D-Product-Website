@@ -124,15 +124,15 @@ const Customizer = () => {
         [tabName]: !prevState[tabName]
       }
     })
+
   }
 
   // adds decals to the shirt based on file uploaded
   const readFile = (type) => {
-    reader(file)
-      .then((result) => {
-        handleDecals(type, result);
-        setActiveEditorTab("");
-      })
+    reader(file).then((result) => {
+      handleDecals(type, result);
+      setActiveEditorTab("");
+    })
   }
 
   // The handle click event now shows the name of the tab when its clicked

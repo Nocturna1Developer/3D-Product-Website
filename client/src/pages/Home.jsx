@@ -27,13 +27,13 @@ const Home = () => {
           <motion.div className="home-content" {...headContentAnimation}>
             <motion.div {...headTextAnimation}>
               <h1 className="head-text">
-                LET'S <br className="x1:block hidden" /> GET CREATIVE!
+                LET'S <br className="x1:block hidden" /> GET IT!
               </h1>
             </motion.div>
 
             <motion.div {...headContentAnimation} className='flex flex-col gap-5'>
               <p className="max-w-md font-normal text-grey-600 text-base">
-                Generate a logo with AI or upload your own, and see the changes on this product!
+                Simply type the object you desire, type the logo or style you want the object to have, and download the object and enjoy!
               </p>
               {/* Check tailwind for more options on customizing buttons "w-fit" etc */}
               <CustomButton
