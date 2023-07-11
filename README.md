@@ -4,6 +4,8 @@
 
 This project is a unique application that leverages the power of ThreeJS to provide a dynamic 3D product customization experience. It integrates advanced features allowing users to create a personalized product design.
 
+![Capture](https://github.com/Nocturna1Developer/FormulateAI-3D-Website/assets/40129107/288019eb-9810-4500-bd80-02a78cf627ff)
+
 ## Key Features
 
 1. **3D Product Rendering:** The home page showcases a 3D product using ThreeJS, providing users with an immersive view of the product from different angles.
